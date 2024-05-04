@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #error_message {
+            position: absolute;
+            top: 330px;
+            left: 400px;
+            font-size: xx-large;
+            color: red;
+        }
+
+        #delete_message {
+            color: red;
+            font-size: medium;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post">{% csrf_token %}
+        <p id="delete_message">Are you sure you want to delete "{{object}}" ?</p>
+        <input type="submit" value="Confirm">
+        <button ><a href="{% url 'task:Task-list' %}">Cancel</a></button>
+    </form>
+</body>
+
+</html>
