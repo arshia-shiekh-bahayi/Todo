@@ -3,7 +3,7 @@ from django.views.generic import *
 from .views import *
 app_name = 'task'
 urlpatterns = [
-    path('', RedirectView.as_view(url='/task'), name='redirect'),
+    path('', RedirectView.as_view(url='/task/api/v1/task'), name='redirect'),
     path('task/', TaskListView.as_view(),name='Task-list'),
     path('task/<int:pk>/' , TaskDetailView.as_view(), name="Task-detail"),
     path('task/create', TaskCreateView.as_view(), name='Task-create'),    

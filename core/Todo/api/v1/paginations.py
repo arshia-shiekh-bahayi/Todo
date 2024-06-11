@@ -9,8 +9,8 @@ class pagination(PageNumberPagination):
             'links': {
                 'next': self.get_next_link(),
                 'previous': self.get_previous_link()
-                },
+            },
             'total_object': self.page.paginator.count,
             'total_pages': self.page.paginator.num_pages,
             'result': data
-            })
+        })

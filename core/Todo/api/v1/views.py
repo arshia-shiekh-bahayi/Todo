@@ -9,7 +9,7 @@ from .serializers import *
 from django.shortcuts import get_object_or_404, redirect
 from .permissions import *
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter , OrderingFilter
+from rest_framework.filters import SearchFilter, OrderingFilter
 from .paginations import *
 # Example of function based view for api
 """An function based api view that allows the user to get a list of all objects of post model and also creating a new one"""
@@ -101,15 +101,17 @@ def postDetail(request, id):
     serializer_class = PostSerializer
     queryset = Post.objects.filter(status=True)'''
 
-#Example of ModelViewSet api views
+# Example of ModelViewSet api views
 class TaskModelViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     serializer_class = TaskSerializer
-    filter_backends = [DjangoFilterBackend,SearchFilter,OrderingFilter]
-    filterset_fields = {'author':["exact"],'title':["exact"],'status':["exact"]}
-    search_fields = ['title','content']
-    ordering_fields = ['created_date',]
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = {'author': ["exact"],
+                        'title': ["exact"], 'status': ["exact"]}
+    search_fields = ['title', 'content']
+    ordering_fields = ['created_date', ]
     # pagination_class = pagination
+
     def get_queryset(self):
         user = self.request.user.id
         profile = get_object_or_404(Profile, user=user)
