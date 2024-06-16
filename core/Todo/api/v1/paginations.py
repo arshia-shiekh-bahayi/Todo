@@ -21,11 +21,9 @@ class DefaultPagination(PageNumberPagination):
                 "total_objects": self.page.paginator.count,
                 "total_pages": self.page.paginator.num_pages,
                 "results": data,
-                
                 "filterset_fields": filterset_fields,
                 "search_fields": search_fields,
                 "ordering_fields": ordering_fields,
-                "results": data,
             }
         )
     
