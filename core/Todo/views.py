@@ -18,8 +18,9 @@ class TaskListView(LoginRequiredMixin,ListView):
         profile =  Profile.objects.get(user=self.request.user)
         return Task.objects.filter(author=profile)
 
-class TaskDetailView(DetailView):
+class TaskDetailView(LoginRequiredMixin,DetailView):
     model = Task
+    
     
 class TaskCreateView(CreateView):
     model = Task
@@ -31,12 +32,12 @@ class TaskCreateView(CreateView):
         form.instance.author = profile
         return super().form_valid(form)
 
-class TaskEditView(UpdateView):
+class TaskEditView(LoginRequiredMixin,UpdateView):
     model = Task
     form_class = TaskForm
     success_url = '/task/'
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(LoginRequiredMixin,DeleteView):
     model = Task
     success_url = '/task/'
 
