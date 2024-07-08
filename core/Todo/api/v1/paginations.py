@@ -7,17 +7,21 @@ class DefaultPagination(PageNumberPagination):
     page_size = 10
 
     def get_paginated_response(self, data):
+<<<<<<< HEAD
         filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
         filterset_fields = {'author': ["exact"],
                         'title': ["exact"], 'status': ["exact"]}
         search_fields = ['title', 'content']
         ordering_fields = ['created_date', ]
+=======
+>>>>>>> authentications-api
         return Response(
             {
                 "links": {
                     "next": self.get_next_link(),
                     "previous": self.get_previous_link(),
                 },
+<<<<<<< HEAD
                 "total_objects": self.page.paginator.count,
                 "total_pages": self.page.paginator.num_pages,
                 "results": data,
@@ -27,3 +31,10 @@ class DefaultPagination(PageNumberPagination):
             }
         )
     
+=======
+                "total_object": self.page.paginator.count,
+                "total_pages": self.page.paginator.num_pages,
+                "result": data,
+            }
+        )
+>>>>>>> authentications-api

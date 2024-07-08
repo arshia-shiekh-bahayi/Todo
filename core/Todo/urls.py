@@ -1,6 +1,7 @@
-from django.urls import path , include
+from django.urls import path, include
 from django.views.generic import *
 from .views import *
+<<<<<<< HEAD
 app_name = 'task'
 urlpatterns = [
     path('', RedirectView.as_view(url='/task/api/v1/task'), name='redirect'),
@@ -12,5 +13,18 @@ urlpatterns = [
     path('task/<int:pk>/Done' , change_to_done , name='Task-done'),
     path('task/<int:pk>/Not_Done' , change_to_not_done , name='Task-not-done'),
     path('task/api/v1/', include('Todo.api.v1.urls'),name='api-v1'),
+=======
+>>>>>>> authentications-api
 
+app_name = "task"
+urlpatterns = [
+    path("", RedirectView.as_view(url="/task"), name="redirect"),
+    path("task/", TaskListView.as_view(), name="Task-list"),
+    path("task/<int:pk>/", TaskDetailView.as_view(), name="Task-detail"),
+    path("task/create", TaskCreateView.as_view(), name="Task-create"),
+    path("task/<int:pk>/edit/", TaskEditView.as_view(), name="Task-edit"),
+    path("task/<int:pk>/delete/", TaskDeleteView.as_view(), name="Task-delete"),
+    path("task/<int:pk>/Done", change_to_done, name="Task-done"),
+    path("task/<int:pk>/Not_Done", change_to_not_done, name="Task-not-done"),
+    path("task/api/v1/", include("Todo.api.v1.urls"), name="api-v1"),
 ]

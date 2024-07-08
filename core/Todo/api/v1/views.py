@@ -10,11 +10,16 @@ from django.shortcuts import get_object_or_404, redirect
 from .permissions import IsOwnerOrReadOnly
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
+<<<<<<< HEAD
 from .paginations import DefaultPagination
 from accounts.models import Profile
+=======
+from .paginations import *
+
+>>>>>>> authentications-api
 # Example of function based view for api
 """An function based api view that allows the user to get a list of all objects of post model and also creating a new one"""
-'''@api_view(["GET", "POST"])
+"""@api_view(["GET", "POST"])
 @permission_classes([IsAuthenticated])
 def postList(request):
     if request.method == "GET":
@@ -25,9 +30,9 @@ def postList(request):
         serializer = PostSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data)'''
+        return Response(serializer.data)"""
 """An function based api view that allows the user to get a certain object of post model and deleting it or editing it"""
-'''@api_view(["GET", "PUT", "DELETE"])
+"""@api_view(["GET", "PUT", "DELETE"])
 def postDetail(request, id):
     post = get_object_or_404(Post, pk=id, status=True)
     if request.method == "GET":
@@ -41,7 +46,7 @@ def postDetail(request, id):
     elif request.method == "DELETE":
         post.delete()
         return Response({"detail": "Item removed successfully"}, status=status.HTTP_204_NO_CONTENT)
-'''
+"""
 
 # Example of class based view for api
 """An class based view api that inherits from APIView and allows the user to get a certain object of post model and deleting it or editing it"""
@@ -102,17 +107,31 @@ def postDetail(request, id):
     serializer_class = PostSerializer
     queryset = Post.objects.filter(status=True)'''
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> authentications-api
 # Example of ModelViewSet api views
 class TaskModelViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     serializer_class = TaskSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+<<<<<<< HEAD
     filterset_fields = {'author': ["exact"],
                         'title': ["exact"], 'status': ["exact"]}
     search_fields = ['title', 'content']
     ordering_fields = ['created_date', ]
     pagination_class = DefaultPagination
 
+=======
+    filterset_fields = {"author": ["exact"], "title": ["exact"], "status": ["exact"]}
+    search_fields = ["title", "content"]
+    ordering_fields = [
+        "created_date",
+    ]
+
+    # pagination_class = pagination
+>>>>>>> authentications-api
     def get_queryset(self):
         user = self.request.user.id
         profile = get_object_or_404(Profile, user=user)

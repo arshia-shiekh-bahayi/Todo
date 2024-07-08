@@ -10,11 +10,11 @@ from django.shortcuts import redirect
 
 class CustomLoginView(LoginView):
     template_name = "accounts/login.html"
-    fields = "username","password"
+    fields = "username", "password"
     redirect_authenticated_user = True
-     
+
     def get_success_url(self):
-        return reverse_lazy('task:Task-list')
+        return reverse_lazy("task:Task-list")
 
 
 # class RegisterPage(FormView):

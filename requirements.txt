@@ -1,10 +1,28 @@
+<<<<<<< HEAD
 #general modules
+=======
+# general mudules
+>>>>>>> authentications-api
 django >3.2,<3.3
 python-decouple
 Pillow
 djangorestframework
 
+<<<<<<< HEAD
 #third party modules
 markdown
 django-filter
 drf-yasg[validation]
+=======
+
+# third party modules
+markdown       
+django-filter  
+drf-yasg[validation]
+djangorestframework-simplejwt
+djoser
+# deployment modules
+
+# email third party modules 
+django-mail-templated
+>>>>>>> authentications-api
