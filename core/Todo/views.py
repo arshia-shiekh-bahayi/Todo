@@ -1,6 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
 from typing import Any
 from django.db.models.query import QuerySet
 from django.forms import BaseModelForm
@@ -22,7 +20,6 @@ class TaskListView(LoginRequiredMixin,ListView):
 
 class TaskDetailView(DetailView):
     model = Task
-    
     
 class TaskCreateView(CreateView):
     model = Task
@@ -48,6 +45,7 @@ def change_to_done(self,pk):
     task.status = True
     task.save()
     return redirect('/task/')
+
 def change_to_not_done(self,pk):
     task = Task.objects.get(pk=pk)
     task.status = False
