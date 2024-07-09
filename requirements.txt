@@ -14,5 +14,6 @@ djoser
 # deployment modules
 pytest-django
 pytest
+coreapi
 # email third party modules 
 django-mail-templated
