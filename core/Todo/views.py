@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+# Create your views here.
 from typing import Any
 from django.db.models.query import QuerySet
 from django.forms import BaseModelForm
@@ -21,12 +23,8 @@ class TaskListView(LoginRequiredMixin, ListView):
         profile = Profile.objects.get(user=self.request.user)
         return Task.objects.filter(author=profile)
 
-<<<<<<< HEAD
-class TaskDetailView(LoginRequiredMixin,DetailView):
-=======
 
 class TaskDetailView(DetailView):
->>>>>>> authentications-api
     model = Task
 
 
@@ -40,18 +38,14 @@ class TaskCreateView(CreateView):
         form.instance.author = profile
         return super().form_valid(form)
 
-<<<<<<< HEAD
-class TaskEditView(LoginRequiredMixin,UpdateView):
-=======
 
 class TaskEditView(UpdateView):
->>>>>>> authentications-api
     model = Task
     form_class = TaskForm
     success_url = "/task/"
 
 
-class TaskDeleteView(LoginRequiredMixin,DeleteView):
+class TaskDeleteView(DeleteView):
     model = Task
     success_url = "/task/"
 
@@ -60,16 +54,10 @@ def change_to_done(self, pk):
     task = Task.objects.get(pk=pk)
     task.status = True
     task.save()
-<<<<<<< HEAD
-    return redirect('/task/')
-
-def change_to_not_done(self,pk):
-=======
     return redirect("/task/")
 
 
 def change_to_not_done(self, pk):
->>>>>>> authentications-api
     task = Task.objects.get(pk=pk)
     task.status = False
     task.save()

@@ -5,24 +5,6 @@ from Todo.models import *
 
 
 class TaskSerializer(serializers.ModelSerializer):
-<<<<<<< HEAD
-    snippet = serializers.ReadOnlyField(source='get_snippet')
-    relative_url = serializers.URLField(
-        source='get_absolute_api_url', read_only=True)
-    absolute_url = serializers.SerializerMethodField(method_name='get_abs_url')
-    author_name = serializers.SerializerMethodField(
-        method_name='author_real_name')
-
-    class Meta:
-        model = Task
-        fields = ['id', 'author', 'author_name', 'title', 'snippet', 'content',
-                  'status', 'relative_url', 'absolute_url', 'created_date', 'updated_date']
-        read_only_fields = ['author']
-
-    def create(self, validated_data):
-        validated_data['author'] = Profile.objects.get(
-            user__id=self.context.get('request').user.id)
-=======
     snippet = serializers.ReadOnlyField(source="get_snippet")
     relative_url = serializers.URLField(source="get_absolute_api_url", read_only=True)
     absolute_url = serializers.SerializerMethodField(method_name="get_abs_url")
@@ -49,7 +31,6 @@ class TaskSerializer(serializers.ModelSerializer):
         validated_data["author"] = Profile.objects.get(
             user__id=self.context.get("request").user.id
         )
->>>>>>> authentications-api
         return super().create(validated_data)
 
     def get_abs_url(self, obj):
@@ -69,9 +50,5 @@ class TaskSerializer(serializers.ModelSerializer):
             rep.pop("relative_url", None)
             rep.pop("absolute_url", None)
         else:
-<<<<<<< HEAD
-            rep.pop('content', None)
-=======
             rep.pop("content", None)
->>>>>>> authentications-api
         return rep
