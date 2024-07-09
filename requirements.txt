@@ -12,6 +12,7 @@ drf-yasg[validation]
 djangorestframework-simplejwt
 djoser
 # deployment modules
-
+pytest-django
+pytest
 # email third party modules 
 django-mail-templated
