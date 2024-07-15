@@ -17,3 +17,5 @@ pytest
 coreapi
 # email third party modules 
 django-mail-templated
+celery
+redis
