@@ -149,11 +149,20 @@ EMAIL_HOST_PASSWORD = ""
 EMAIL_PORT = 25
 
 
-CELERY_BROKER_URL = 'redis://redis:6379/1'
+CELERY_BROKER_URL = 'redis://redis:6379/3'
 
 CELERY_BEAT_SCHEDULE = {
     'delete-completed-tasks-every-10-minutes': {
         'task': 'Todo.tasks.delete_completed_tasks',
         'schedule':600
     },
+}
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/4",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
 }

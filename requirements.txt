@@ -19,3 +19,4 @@ coreapi
 django-mail-templated
 celery
 redis
+django-redis
