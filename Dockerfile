@@ -10,8 +10,8 @@ WORKDIR /app
 
 # Copy and install dependencies
 COPY requirements.txt /app/
-RUN pip3 install --upgrade pip \
-    && pip3 install -r requirements.txt
+RUN pip3 install --upgrade pip 
+RUN pip3 install -r requirements.txt
 
 # Copy the current directory contents into the container at /app
 COPY ./core /app
