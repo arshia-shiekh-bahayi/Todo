@@ -1,7 +1,9 @@
 {
     "cSpell.words": [
+        "filterset",
         "openweather",
         "redoc",
+        "viewsets",
         "yasg"
     ],
     "python.testing.pytestArgs": [

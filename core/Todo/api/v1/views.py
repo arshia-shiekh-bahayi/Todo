@@ -12,7 +12,7 @@ from django.shortcuts import get_object_or_404, redirect
 from .permissions import *
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
-from .paginations import *
+from .paginations import pagination
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 from rest_framework.decorators import api_view
@@ -119,7 +119,6 @@ class TaskModelViewSet(viewsets.ModelViewSet):
     ordering_fields = [
         "created_date",
     ]
-
     # pagination_class = pagination
     def get_queryset(self):
         user = self.request.user.id
