@@ -6,7 +6,5 @@ from rest_framework.routers import *
 router = DefaultRouter()
 router.register("task", TaskModelViewSet, basename="task")
 app_name = "api-v1"
-urlpatterns = [
-    path("weather",openweather,name="weather")
-]
+urlpatterns = [path("weather", openweather, name="weather")]
 urlpatterns += router.urls

@@ -17,6 +17,7 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
 # Example of function based view for api
 """An function based api view that allows the user to get a list of all objects of post model and also creating a new one"""
 """@api_view(["GET", "POST"])
@@ -127,12 +128,11 @@ class TaskModelViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-
-
-
 @cache_page(1200)
 @vary_on_cookie
 @api_view(["GET"])
 def openweather(request):
-    response = requests.get("https://api.openweathermap.org/data/2.5/weather?lat=35.43&lon=51.24&appid=656b527b7e167d2be83046aec11f1685") 
+    response = requests.get(
+        "https://api.openweathermap.org/data/2.5/weather?lat=35.43&lon=51.24&appid=656b527b7e167d2be83046aec11f1685"
+    )
     return JsonResponse(response.json())
